@@ -18,6 +18,7 @@ import Network.HTTP.Req (
   useHttpsURI,
  )
 import Strategy.Dart.Errors (refPubDocUrl)
+import Strategy.Gradle.Errors (refGradleDocUrl)
 import Strategy.Node.Errors (
   fossaNodeDocUrl,
   npmLockFileDocUrl,
@@ -56,6 +57,7 @@ urlsToCheck =
   , swiftFossaDocUrl
   , swiftPackageResolvedRef
   , xcodeCoordinatePkgVersion
+  , refGradleDocUrl
   ]
 
 spec :: Spec
