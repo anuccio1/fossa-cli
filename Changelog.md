@@ -12,6 +12,11 @@
 - Nodejs: Improves error and warning messages. ([#805](https://github.com/fossas/fossa-cli/pull/805))
 - Swift: Improves error and warning messages. ([#802](https://github.com/fossas/fossa-cli/pull/802))
 - Cocoapods: Improves error and warning messages. ([#807](https://github.com/fossas/fossa-cli/pull/807))
+- Scala: Improves error and warning messages.
+- Clojure: Improves error and warning messages.
+- Nim: Improves error and warning messages.
+- Rust: Improves error and warning messages.
+- UX: Improves error message when executable is not found. 
 
 ## v3.1.0 
 
