@@ -88,18 +88,6 @@ jq -c ".assets | map({url: .url, name: .name}) | map(select($FILTER)) | .[]" $TH
   curl -sL -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/octet-stream" -s $URL > $OUTPUT
 done
 echo "Themis download successful"
-
-FILTER=".name == \"index.gob\""
-jq -c ".assets | map({url: .url, name: .name}) | map(select($FILTER)) | .[]" $THEMIS_RELEASE_JSON | while read ASSET; do
-  URL="$(echo $ASSET | jq -c -r '.url')"
-  NAME="$(echo $ASSET | jq -c -r '.name')"
-  OUTPUT="$(echo vendor-bins/$NAME)"
-
-  echo "Downloading '$NAME' to '$OUTPUT'"
-  curl -sL -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/octet-stream" -s $URL > $OUTPUT
-done
-echo "themis index downloaded"
-
 rm $THEMIS_RELEASE_JSON
 echo
 

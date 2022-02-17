@@ -10,7 +10,7 @@ module App.Fossa.EmbeddedBinary (
   BinaryPaths,
   withWigginsBinary,
   withSyftBinary,
-  withThemisBinaryAndIndex,
+  withThemisBinary,
   allBins,
   PackagedBinary (..),
   dumpSubCommand,
@@ -53,7 +53,6 @@ data PackagedBinary
   = Syft
   | Wiggins
   | Themis
-  | ThemisIndex
   deriving (Show, Eq, Enum, Bounded)
 
 dumpSubCommand :: SubCommand DumpBinsOpts DumpBinsConfig
@@ -87,12 +86,12 @@ withWigginsBinary ::
   m c
 withWigginsBinary = withEmbeddedBinary Wiggins
 
-withThemisBinaryAndIndex ::
+withThemisBinary ::
   ( Has (Lift IO) sig m
   ) =>
-  ([BinaryPaths] -> m c) ->
+  (BinaryPaths -> m c) ->
   m c
-withThemisBinaryAndIndex = bracket (traverse extractEmbeddedBinary [Themis, ThemisIndex]) (traverse cleanupExtractedBinaries)
+withThemisBinary = withEmbeddedBinary Themis
 
 withEmbeddedBinary ::
   ( Has (Lift IO) sig m
@@ -125,7 +124,6 @@ writeBinary dest bin = sendIO . writeExecutable dest $ case bin of
   Syft -> embeddedBinarySyft
   Wiggins -> embeddedBinaryWiggins
   Themis -> embeddedBinaryThemis
-  ThemisIndex -> embeddedBinaryThemisIndex
 
 writeExecutable :: Path Abs File -> ByteString -> IO ()
 writeExecutable path content = do
@@ -140,7 +138,6 @@ extractedPath bin = case bin of
   -- Users don't know what "wiggins" is, but they explicitly enable the VSI plugin, so this is more intuitive.
   Wiggins -> $(mkRelFile "vsi-plugin")
   Themis -> $(mkRelFile "themis-cli")
-  ThemisIndex -> $(mkRelFile "index.gob")
 
 extractDir :: Has (Lift IO) sig m => m (Path Abs Dir)
 extractDir = do
@@ -164,6 +161,3 @@ embeddedBinarySyft = $(embedFileIfExists "vendor-bins/syft")
 
 embeddedBinaryThemis :: ByteString
 embeddedBinaryThemis = $(embedFileIfExists "vendor-bins/themis-cli")
-
-embeddedBinaryThemisIndex :: ByteString
-embeddedBinaryThemisIndex = $(embedFileIfExists "vendor-bins/index.gob")
