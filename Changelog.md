@@ -3,7 +3,9 @@
 ## Yet to be released
 
 - UX: Parser error messages include call to action. ([#801](https://github.com/fossas/fossa-cli/pull/801))
-- UX: Improves error message when executable is not found. ([#802](https://github.com/fossas/fossa-cli/pull/813))
+- UX: Improves error message when executable is not found. ([#813](https://github.com/fossas/fossa-cli/pull/813))
+- UX: Fixes minor scan summary ordering bug. ([#813](https://github.com/fossas/fossa-cli/pull/813))
+- UX: Writes errors and warnings encountered in analyze to temp file. ([#813](https://github.com/fossas/fossa-cli/pull/813))
 - Ruby: Improves error and warning messages. ([#800](https://github.com/fossas/fossa-cli/pull/800))
 - Python: `setup.py` error messages are _less_ noisy. ([#801](https://github.com/fossas/fossa-cli/pull/801))
 - Dart: Improves error and warning messages. ([#800](https://github.com/fossas/fossa-cli/pull/806))
@@ -13,10 +15,10 @@
 - Nodejs: Improves error and warning messages. ([#805](https://github.com/fossas/fossa-cli/pull/805))
 - Swift: Improves error and warning messages. ([#802](https://github.com/fossas/fossa-cli/pull/802))
 - Cocoapods: Improves error and warning messages. ([#807](https://github.com/fossas/fossa-cli/pull/807))
-- Scala: Improves error and warning messages. ([#802](https://github.com/fossas/fossa-cli/pull/813))
-- Clojure: Improves error and warning messages. ([#802](https://github.com/fossas/fossa-cli/pull/813))
-- Nim: Improves error and warning messages. ([#802](https://github.com/fossas/fossa-cli/pull/813))
-- Rust: Improves error and warning messages. ([#802](https://github.com/fossas/fossa-cli/pull/813))
+- Scala: Improves error and warning messages. ([#813](https://github.com/fossas/fossa-cli/pull/813))
+- Clojure: Improves error and warning messages. ([#813](https://github.com/fossas/fossa-cli/pull/813))
+- Nim: Improves error and warning messages. ([#813](https://github.com/fossas/fossa-cli/pull/813))
+- Rust: Improves error and warning messages. ([#813](https://github.com/fossas/fossa-cli/pull/813))
 
 ## v3.1.0 
 
